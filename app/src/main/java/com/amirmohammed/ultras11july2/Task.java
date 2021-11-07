@@ -2,7 +2,7 @@ package com.amirmohammed.ultras11july2;
 
 public class Task {
 
-    private String id;
+    private Long id;
 
     private String title;
 
@@ -12,7 +12,7 @@ public class Task {
 
     private String status = "active";
 
-    public Task(String id, String title, String date, String time) {
+    public Task(Long id, String title, String date, String time) {
         this.id = id;
         this.title = title;
         this.date = date;
@@ -22,11 +22,11 @@ public class Task {
     public Task() {
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

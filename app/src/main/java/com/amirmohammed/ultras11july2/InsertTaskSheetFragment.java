@@ -56,7 +56,7 @@ public class InsertTaskSheetFragment extends BottomSheetDialogFragment {
 
                 String randomId = String.valueOf(System.currentTimeMillis());
 
-                Task task = new Task(randomId, title, date, time);
+                Task task = new Task(System.currentTimeMillis(), title, date, time);
 
 //                TasksDatabase.getInstance(requireContext()).tasksDao().insertTask(task);
 

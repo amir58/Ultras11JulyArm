@@ -17,7 +17,7 @@
         android:padding="10dp"
         tools:context=".ProfileActivity">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/image_view"
             glide="@{user.imageUrl}"
             android:layout_width="100dp"

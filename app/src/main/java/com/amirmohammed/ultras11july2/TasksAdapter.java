@@ -16,9 +16,11 @@ import java.util.List;
 public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskHolder> {
 
     List<Task> taskArrayList = new ArrayList<>();
+    ITaskUpdates iTaskUpdates;
 
-    public TasksAdapter(List<Task> taskArrayList) {
+    public TasksAdapter(List<Task> taskArrayList, ITaskUpdates iTaskUpdates) {
         this.taskArrayList = taskArrayList;
+        this.iTaskUpdates = iTaskUpdates;
     }
 
     @NonNull
@@ -43,8 +45,9 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskHolder> 
             public void onClick(View v) {
                 task.setStatusDone();
 //                TasksDatabase.getInstance(v.getContext()).tasksDao().updateTask(task);
-                taskArrayList.remove(position);
-                notifyItemRemoved(position);
+                iTaskUpdates.onDonePressed(task);
+                taskArrayList.remove(holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
             }
         });
 
@@ -52,9 +55,10 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskHolder> 
             @Override
             public void onClick(View v) {
                 task.setStatusArchive();
+                iTaskUpdates.onArchivePressed(task);
 //                TasksDatabase.getInstance(v.getContext()).tasksDao().updateTask(task);
-                taskArrayList.remove(position);
-                notifyItemRemoved(position);
+                taskArrayList.remove(holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
             }
         });
     }
